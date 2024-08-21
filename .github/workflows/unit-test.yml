@@ -1,0 +1,28 @@
+# アクション名
+name: Unit Test
+
+# タイミングを指定
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+
+jobs:
+    Test:
+        name: Run test codes
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Install and cache nodejs
+              uses: actions/setup-node@v3
+              with:
+                  node-version-file: ./package.json
+                  cache: 'npm'
+                  cache-dependency-path: '**/package-lock.json'
+
+            - name: Install packages
+              run: npm ci
+
+            - name: Run Test
+              run: npm run test
