@@ -6,6 +6,8 @@ on:
   # プルリクエストがオープンされたとき
   pull_request:
     types: [opened, reopened, synchronize]
+    paths:
+      - 'src/**'
 
 # ジョブ
 jobs:
