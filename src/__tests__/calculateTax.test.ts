@@ -21,7 +21,7 @@ describe('消費税計算', () => {
         expect(calculateTax(123, false, false)).toBe(135)
     })
 
-    // it('198円 -> 218円', () => {
-    //     expect(calculateTax(198, false, false)).toBe(218)
-    // })
+    it('198円 -> 218円', () => {
+        expect(calculateTax(198, false, false)).toBe(218)
+    })
 })
