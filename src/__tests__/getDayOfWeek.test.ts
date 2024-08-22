@@ -13,7 +13,7 @@ describe('曜日を取得', () => {
     expect(getDayOfWeek('2023年4月13日')).toBeUndefined()
   })
 
-  // it('存在しない日付', () => {
-  //   expect(getDayOfWeek('2023-04-31')).toBeUndefined()
-  // })
+  it('存在しない日付', () => {
+    expect(getDayOfWeek('2023-04-31')).toBeUndefined()
+  })
 })
