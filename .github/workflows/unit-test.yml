@@ -5,8 +5,8 @@ name: Unit Test
 on:
     pull_request:
         types: [opened, reopened, synchronize]
-    paths:
-        - 'src/**'
+        paths:
+            - 'src/**'
 
 jobs:
     Test:
