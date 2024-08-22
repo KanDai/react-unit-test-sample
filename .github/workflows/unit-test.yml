@@ -1,0 +1,40 @@
+# アクション名
+name: Unit Test
+
+# トリガー
+on:
+  # プルリクエストがオープンされたとき
+  pull_request:
+    types: [opened, reopened, synchronize]
+    paths:
+      - 'src/**'
+
+# ジョブ
+jobs:
+  # ユニットテスト
+  unit-test:
+    # ジョブ名
+    name: Run test codes
+    # ジョブ実行環境
+    runs-on: ubuntu-latest
+    # ジョブのステップ
+    steps:
+      # リポジトリをチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Node.js のバージョンを設定
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ./.node-version
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      # パッケージのインストール
+      - name: Install packages
+        run: npm ci
+
+      # テストの実行
+      - name: Run test
+        run: npm run test
